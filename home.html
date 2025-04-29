@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venn</title>
+</head>
+<body>
+    <div class="profile-picture">
+        <img src="Elements/img.jpeg" alt="Profile Picture">
+    </div>
+    <div class="social-icons">
+        <a style="text-decoration:none;" href="https://www.linkedin.com/in/venn-v/" target="_blank" class="social-icon">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a style="text-decoration:none;" href="https://github.com/vennby" target="_blank" class="social-icon">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/venn.by" target="_blank" class="social-icon">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="search about vennela vallabhaneni...">
+        <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.398 20.5787L16.6704 15.8511C17.5799 14.5607 18.0682 13.0025 18.0682 11.3713C18.0682 6.68233 14.3659 3 9.03409 3C3.7023 3 0 6.68233 0 11.3713C0 16.0603 3.7023 19.7427 9.03409 19.7427C10.6226 19.7427 12.1073 19.2728 13.3944 18.5012L18.1465 23.2288C18.5369 23.6219 19.1661 23.6219 19.5565 23.2288L21.398 21.4377C21.7884 21.0445 21.7884 20.4094 21.398 20.5787ZM9.03409 17.5036C5.19278 17.5036 2.20455 14.5124 2.20455 11.3713C2.20455 8.23013 5.19278 5.23888 9.03409 5.23888C12.8754 5.23888 15.8636 8.23013 15.8636 11.3713C15.8636 14.5124 12.8754 17.5036 9.03409 17.5036Z" fill="#70757A"/>
+        </svg>
+        <div class="dropdown" id="dropdown">
+            <div class="dropdown-item">
+                <a href="about.html" class="option-link"></a>
+                <div class="option-text">About Me</div>
+                <div class="subscript">just a little about what makes me, me :)</div>
+                </a>
+            </div>
+            <div class="dropdown-item">
+                <div class="option-text">My Projects and Experiences</div>
+                <div class="subscript">more about what i have cooked, and what i'm cooking...</div>
+            </div>
+            <div class="dropdown-item">
+                <a href="skills.html" class="option-link"></a>
+                <div class="option-text">My Skills and Capabilities</div>
+                <div class="subscript">a neat lil overview of what i can do, be sure to check it out!</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-input');
+            const dropdown = document.getElementById('dropdown');
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+            searchInput.addEventListener('click', function() {
+                dropdown.classList.toggle('show');
+            });
+
+            searchInput.addEventListener('input', function() {
+                const filter = searchInput.value.toLowerCase();
+                let shouldShowDropdown = false;
+
+                dropdownItems.forEach(item => {
+                    const text = item.querySelector('.option-text').textContent.toLowerCase();
+                    if (text.includes(filter)) {
+                        item.style.display = 'block';
+                        shouldShowDropdown = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                if (shouldShowDropdown) {
+                    dropdown.classList.add('show');
+                } else {
+                    dropdown.classList.remove('show');
+                }
+            });
+
+            document.addEventListener('click', function(event) {
+                const isClickedInside = searchInput.contains(event.target) || dropdown.contains(event.target);
+                const isDropdownVisible = dropdown.classList.contains('show');
+                if (!isClickedInside && isDropdownVisible) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
