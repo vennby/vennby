@@ -1,4 +1,4 @@
-## Hi there 👋
+<h2 align="center"> hi! i'm venn :) 👋 </h2>
 
 <!--
 **vennby/vennby** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
