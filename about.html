@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vennepedia</title>
+  </head>
+  <body class="wiki-body">
+    <!-- Wikipedia Modal -->
+    <div class="wiki-modal wiki-modal-full">
+      <div class="wiki-header">
+        <a href="index.html" class="wiki-back-link">← Back to Home</a>
+        <div class="wiki-logo">vennepedia</div>
+        <div style="width: 100px"></div>
+      </div>
+
+      <div class="wiki-tabs">
+        <button class="wiki-tab active" onclick="switchTab('article')">
+          Article
+        </button>
+        <button class="wiki-tab" onclick="switchTab('talk')">Talk</button>
+        <button class="wiki-tab" onclick="switchTab('edit')">Edit</button>
+      </div>
+
+      <div class="wiki-content">
+        <!-- Sidebar -->
+        <div class="wiki-sidebar">
+          <div class="wiki-infobox">
+            <div class="wiki-infobox-title">Vennela Vallabhaneni</div>
+            <img
+              src="src/elements/img.jpeg"
+              alt="Vennela Vallabhaneni"
+              class="wiki-infobox-image"
+            />
+
+            <div class="wiki-infobox-row">
+              <div class="wiki-infobox-label">Also known as</div>
+              <div class="wiki-infobox-value">venn, vennby</div>
+            </div>
+
+            <div class="wiki-infobox-row">
+              <div class="wiki-infobox-label">Occupation</div>
+              <div class="wiki-infobox-value">
+                Full Stack Developer, Designer, Open Source Contributor
+              </div>
+            </div>
+
+            <div class="wiki-infobox-row">
+              <div class="wiki-infobox-label">Known for</div>
+              <div class="wiki-infobox-value">
+                Web development, UI/UX design, innovative projects
+              </div>
+            </div>
+
+            <div class="wiki-infobox-row">
+              <div class="wiki-infobox-label">Fields</div>
+              <div class="wiki-infobox-value">
+                Software Engineering, Web Design
+              </div>
+            </div>
+
+            <div class="wiki-infobox-row">
+              <div class="wiki-infobox-label">Interests</div>
+              <div class="wiki-infobox-value">
+                Technology, Design, Open Source, Creative Development
+              </div>
+            </div>
+          </div>
+
+          <div class="wiki-toc">
+            <div class="wiki-toc-title">Contents</div>
+            <ol class="wiki-toc-list">
+              <li class="wiki-toc-item">
+                <a onclick="scrollToSection('early-life')">Early Life</a>
+              </li>
+              <li class="wiki-toc-item">
+                <a onclick="scrollToSection('career')">Career</a>
+              </li>
+              <li class="wiki-toc-item">
+                <a onclick="scrollToSection('skills')">Skills & Expertise</a>
+              </li>
+              <li class="wiki-toc-item">
+                <a onclick="scrollToSection('projects')">Notable Projects</a>
+              </li>
+              <li class="wiki-toc-item">
+                <a onclick="scrollToSection('philosophy')"
+                  >Philosophy & Values</a
+                >
+              </li>
+              <li class="wiki-toc-item">
+                <a onclick="scrollToSection('references')">References</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="wiki-main">
+          <h1 class="wiki-title">Vennela Vallabhaneni</h1>
+          <p class="wiki-subtitle">
+            Full Stack Developer, Designer, and Creative Technologist
+          </p>
+
+          <div class="wiki-section" id="early-life">
+            <h2 class="wiki-section-title">Early Life</h2>
+            <p class="wiki-paragraph">
+              Vennela Vallabhaneni (born and raised in a tech-forward
+              environment) is a passionate software engineer and design
+              enthusiast. From an early age, she demonstrated an exceptional
+              interest in technology and creative problem-solving. Her journey
+              into software development began with curiosity about how things
+              work, quickly evolving into a professional career in full stack
+              development.
+            </p>
+          </div>
+
+          <div class="wiki-section" id="career">
+            <h2 class="wiki-section-title">Career</h2>
+            <p class="wiki-paragraph">
+              Vennela's professional journey spans across frontend, backend, and
+              full stack development. She has worked on diverse projects ranging
+              from web applications to innovative design implementations. Her
+              approach combines technical excellence with thoughtful user
+              experience design, making her work stand out in the industry.
+            </p>
+            <p class="wiki-paragraph">
+              Known for her commitment to creating beautiful and functional
+              applications, she believes in the power of well-crafted software
+              to make a positive impact. She actively contributes to open source
+              projects, advancing the development community through code
+              contributions and knowledge sharing.
+            </p>
+          </div>
+
+          <div class="wiki-section" id="skills">
+            <h2 class="wiki-section-title">Skills & Expertise</h2>
+            <p class="wiki-paragraph">
+              Vennela possesses a comprehensive skill set spanning modern web
+              development technologies:
+            </p>
+            <ul class="wiki-list">
+              <li>
+                <strong>Frontend:</strong> React, TypeScript, JavaScript, CSS,
+                HTML, responsive design
+              </li>
+              <li>
+                <strong>Backend:</strong> Node.js, Python, database design, API
+                development
+              </li>
+              <li>
+                <strong>Full Stack:</strong> System design, DevOps practices,
+                scalable architecture
+              </li>
+              <li>
+                <strong>Design:</strong> UI/UX design, user experience, creative
+                implementation
+              </li>
+              <li>
+                <strong>Other:</strong> Git, deployment, cloud services,
+                emerging technologies
+              </li>
+            </ul>
+          </div>
+
+          <div class="wiki-section" id="projects">
+            <h2 class="wiki-section-title">Notable Projects</h2>
+            <p class="wiki-paragraph">
+              Throughout her career, Vennela has worked on numerous projects
+              that showcase her versatility and commitment to quality. Her
+              portfolio includes web applications, design implementations, and
+              full stack solutions. Each project represents her growth as a
+              developer and her dedication to creating impactful software.
+            </p>
+            <p class="wiki-paragraph">
+              Her work has been recognized for its attention to detail,
+              innovative approaches, and user-centric design philosophy. She
+              continues to explore emerging technologies and push the boundaries
+              of what's possible in web development.
+            </p>
+          </div>
+
+          <div class="wiki-section" id="philosophy">
+            <h2 class="wiki-section-title">Philosophy & Values</h2>
+            <p class="wiki-paragraph">
+              Vennela believes in continuous learning and personal growth. She
+              values collaboration, creative thinking, and the importance of
+              creating software that matters. Her philosophy centers on building
+              products that are not only technically sound but also delightful
+              to use.
+            </p>
+            <p class="wiki-paragraph">
+              She is driven by challenges that require innovative solutions and
+              enjoys contributing to projects that have a meaningful impact. Her
+              work reflects her commitment to excellence, accessibility, and
+              developer experience.
+            </p>
+          </div>
+
+          <div class="wiki-section" id="references">
+            <h2 class="wiki-section-title">References</h2>
+            <ul class="wiki-list">
+              <li>
+                <a
+                  href="https://github.com/vennby"
+                  class="wiki-link"
+                  target="_blank"
+                  >GitHub Profile</a
+                >
+                - Open source contributions and project repositories
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/venn-v/"
+                  class="wiki-link"
+                  target="_blank"
+                  >LinkedIn Profile</a
+                >
+                - Professional experience and credentials
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/venn.by"
+                  class="wiki-link"
+                  target="_blank"
+                  >Instagram</a
+                >
+                - Creative projects and personal content
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/js/about.js"></script>
+  </body>
+</html>

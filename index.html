@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <link rel="stylesheet" href="src/elements/style.css" />
+    <link rel="stylesheet" href="src/css/style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Venn</title>
@@ -60,7 +60,7 @@
       </svg>
       <div class="dropdown" id="dropdown">
         <div class="dropdown-item">
-          <a href="page1.html" class="option-link">
+          <a href="about.html" class="option-link" target="_self">
             <div class="option-text">About Me</div>
             <div class="subscript">
               just a little about what makes me, me :)
@@ -68,7 +68,7 @@
           </a>
         </div>
         <div class="dropdown-item">
-          <a href="page2.html" class="option-link">
+          <a href="gallery.html" class="option-link">
             <div class="option-text">My Projects and Experiences</div>
             <div class="subscript">
               more about what i have cooked, and what i'm cooking...
@@ -76,7 +76,7 @@
           </a>
         </div>
         <div class="dropdown-item">
-          <a href="page3.html" class="option-link">
+          <a href="projects.html" class="option-link">
             <div class="option-text">My Skills and Capabilities</div>
             <div class="subscript">
               a neat lil overview of what i can do, be sure to check it out!
@@ -86,49 +86,20 @@
       </div>
     </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const searchInput = document.querySelector(".search-input");
-        const dropdown = document.getElementById("dropdown");
-        const dropdownItems = document.querySelectorAll(".dropdown-item");
+    <!-- Search Results Modal -->
+    <div class="search-results-overlay" id="searchResultsOverlay">
+      <div class="search-results-header">
+        <div class="search-results-logo">vennela's results</div>
+        <button class="close-results-btn" onclick="closeSearchResults()">
+          ×
+        </button>
+      </div>
+      <div class="search-results-content">
+        <button class="back-btn" onclick="closeSearchResults()">← Back</button>
+        <div id="resultsContainer"></div>
+      </div>
+    </div>
 
-        searchInput.addEventListener("click", function () {
-          dropdown.classList.toggle("show");
-        });
-
-        searchInput.addEventListener("input", function () {
-          const filter = searchInput.value.toLowerCase();
-          let shouldShowDropdown = false;
-
-          dropdownItems.forEach((item) => {
-            const text = item
-              .querySelector(".option-text")
-              .textContent.toLowerCase();
-            if (text.includes(filter)) {
-              item.style.display = "block";
-              shouldShowDropdown = true;
-            } else {
-              item.style.display = "none";
-            }
-          });
-
-          if (shouldShowDropdown) {
-            dropdown.classList.add("show");
-          } else {
-            dropdown.classList.remove("show");
-          }
-        });
-
-        document.addEventListener("click", function (event) {
-          const isClickedInside =
-            searchInput.contains(event.target) ||
-            dropdown.contains(event.target);
-          const isDropdownVisible = dropdown.classList.contains("show");
-          if (!isClickedInside && isDropdownVisible) {
-            dropdown.classList.remove("show");
-          }
-        });
-      });
-    </script>
+    <script src="src/js/index.js"></script>
   </body>
 </html>

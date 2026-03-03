@@ -1,0 +1,613 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(
+    circle at center,
+    #ffecd2 0%,
+    #fcb69f 25%,
+    #e8d5f2 50%,
+    #c4a9ff 75%,
+    #ffd6e8 100%
+  );
+  color: white; /* Default text color */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: floating 3s infinite alternate ease-in-out;
+  transform: translateY(-20px);
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Push background below elements */
+  background-image:
+    radial-gradient(circle, rgba(255, 182, 193, 0.15) 1px, transparent 1px),
+    radial-gradient(circle, rgba(147, 112, 219, 0.1) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255, 218, 185, 0.12) 1.5px, transparent 1.5px);
+  background-size:
+    80px 80px,
+    120px 120px,
+    100px 100px;
+  background-position:
+    0 0,
+    40px 40px,
+    20px 60px;
+  opacity: 0.7;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: auto;
+}
+
+.social-icons {
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+.social-icon {
+  color: #fff;
+  font-size: 24px;
+  margin: 0 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  color: #ff6b9d;
+  transform: translateY(-3px);
+}
+
+.search-container {
+  position: relative;
+  width: 585px;
+  max-width: 90%;
+}
+
+.search-input {
+  border: none;
+  background-color: #fff;
+  font-size: 16px;
+  padding: 15px 65px 15px 20px;
+  width: 100%;
+  border-radius: 25px;
+  outline: none;
+  transition: box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-input:focus {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-icon {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%) scale(1);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.search-icon:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.5s ease-in-out,
+    opacity 0.3s ease-in-out;
+}
+
+.dropdown.show {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+  background-color: #ffe6f0;
+}
+
+.dropdown-item:hover .subscript {
+  color: #000;
+}
+
+.dropdown-item:hover .option-text {
+  font-size: 16px;
+  color: #000;
+}
+
+/* Remove underline and apply purple glow for dropdown links */
+.dropdown-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dropdown-item a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ffe6f0;
+}
+
+.option-text {
+  font-size: 16px;
+  color: #333;
+}
+
+.subscript {
+  font-size: 12px;
+  color: #888;
+  margin-top: 5px;
+}
+
+.bottom-image {
+  width: 100%;
+}
+/* Search Results Page */
+.search-results-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #fffbf8 0%, #fff5f0 100%);
+  z-index: 1000;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.search-results-overlay.active {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.search-results-header {
+  padding: 20px 40px;
+  border-bottom: 1px solid #e8d5f2;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-results-logo {
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff6b9d 0%, #c4a9ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.close-results-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.close-results-btn:hover {
+  color: #ff6b9d;
+}
+
+.search-results-content {
+  flex: 1;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.result-title {
+  color: #1a73e8;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 25px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.result-title:hover {
+  color: #ff6b9d;
+}
+
+.result-url {
+  color: #006621;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.result-description {
+  color: #545454;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.result-category {
+  color: #ff6b9d;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.search-result-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #e8d5f2;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-bottom: 30px;
+  padding: 10px 15px;
+  background: linear-gradient(90deg, #ff6b9d 0%, #c4a9ff 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+}
+/* Wikipedia Style About Page */
+.wiki-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f8f9fa;
+  z-index: 1000;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.wiki-modal.active {
+  display: block;
+}
+
+.wiki-header {
+  background: white;
+  border-bottom: 1px solid #e8d5f2;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.wiki-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3366cc;
+  letter-spacing: -0.5px;
+}
+
+.wiki-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.wiki-close:hover {
+  color: #ff6b9d;
+}
+
+.wiki-tabs {
+  background: white;
+  border-bottom: 1px solid #e8d5f2;
+  display: flex;
+  gap: 0;
+  padding: 0 40px;
+}
+
+.wiki-tab {
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  color: #666;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.wiki-tab.active {
+  border-bottom-color: #3366cc;
+  color: #3366cc;
+  font-weight: 500;
+}
+
+.wiki-tab:hover {
+  color: #3366cc;
+}
+
+.wiki-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  padding: 20px 40px;
+}
+
+.wiki-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.wiki-infobox {
+  background: #f9f9f9;
+  border: 1px solid #e8d5f2;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.wiki-infobox-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+}
+
+.wiki-infobox-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border: 1px solid #e8d5f2;
+}
+
+.wiki-infobox-row {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e8d5f2;
+}
+
+.wiki-infobox-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.wiki-infobox-label {
+  font-weight: 600;
+  color: #555;
+  font-size: 13px;
+}
+
+.wiki-infobox-value {
+  color: #666;
+  margin-top: 4px;
+}
+
+.wiki-toc {
+  background: #f9f9f9;
+  border: 1px solid #e8d5f2;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.wiki-toc-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 14px;
+}
+
+.wiki-toc-list {
+  list-style: none;
+  padding: 0;
+  font-size: 13px;
+}
+
+.wiki-toc-item {
+  margin-bottom: 6px;
+}
+
+.wiki-toc-item a {
+  color: #3366cc;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wiki-toc-item a:hover {
+  text-decoration: underline;
+}
+
+.wiki-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.wiki-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+  border-bottom: 1px solid #e8d5f2;
+  padding-bottom: 10px;
+}
+
+.wiki-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.wiki-section {
+  margin-bottom: 30px;
+}
+
+.wiki-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  border-bottom: 1px solid #e8d5f2;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.wiki-section:first-child .wiki-section-title {
+  margin-top: 0;
+}
+
+.wiki-paragraph {
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  text-align: justify;
+  font-size: 15px;
+}
+
+.wiki-link {
+  color: #3366cc;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wiki-link:hover {
+  text-decoration: underline;
+}
+
+.wiki-citation {
+  font-size: 11px;
+  color: #666;
+  vertical-align: super;
+  margin: 0 2px;
+}
+
+.wiki-list {
+  margin: 15px 0;
+  padding-left: 30px;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.wiki-list li {
+  margin-bottom: 8px;
+}
+/* About Page Specific */
+.wiki-body {
+  background: #f8f9fa !important;
+  animation: none !important;
+  transform: none !important;
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.wiki-body::before {
+  display: none !important;
+}
+
+.wiki-modal-full {
+  display: block !important;
+  position: static !important;
+  background: #f8f9fa !important;
+  z-index: auto !important;
+  padding-bottom: 40px;
+}
+
+.wiki-modal-full.active {
+  display: block !important;
+}
+
+.wiki-back-link {
+  color: #3366cc;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.wiki-back-link:hover {
+  color: #ff6b9d;
+  text-decoration: underline;
+}
